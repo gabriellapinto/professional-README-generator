@@ -1,28 +1,25 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// renders the license badge for the user
 function renderLicenseBadge(license) {
-  license ? `[![License](https://img.shields.io/badge/license-${license}.svg]` : "";
+  return license ? `[![License](https://img.shields.io/badge/license-${license}-blueviolet.svg)]` : "";
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// renders the license link for the user
 function renderLicenseLink(license) {
-  license ?                                 : "";
+  return license ?  `[license](https://img.shields.io/badge/license-${license}-blueviolet.svg)` : "";
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// renders the license section that is then added to generateMarkdown()
 function renderLicenseSection(license) {
-  license ? ((renderLicenseBadge()) + (renderLicenseLink()))  : "";
+  return license ? ((renderLicenseBadge(license)) + (renderLicenseLink(license)))  : "";
 }
 
-// TODO: Create a function to generate markdown for README
+// generates the markdown for the README with data from the questions
 function generateMarkdown(data) {
   return `# ${data.title}
 
   ## Description
 
-  ${data.description},
+  ${data.description}
 
   ## Table of Contents
 
@@ -36,21 +33,21 @@ function generateMarkdown(data) {
 
   * [Tests](#tests)
 
-  * [Questions](#questions),
+  * [Questions](#questions)
 
   ## Installation
 
   To install necessary dependencies, run the following command:
 
-  ${data.installation},
+  ${data.installation}
   
   ## Usage
   
-  ${data.usage},
+  ${data.usage}
 
   ## License
 
-  This project is licensed under the ${renderLicenseSection()} license.
+  This project is licensed under the ${renderLicenseSection(data.license)}.
 
   ## Contributing
 
